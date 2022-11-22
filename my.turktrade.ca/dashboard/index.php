@@ -222,16 +222,15 @@ if(!isset($_SESSION["myturktrade"])){
                                 </p>
                             </a>
                         </li>
-                        <!--
+
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
-                                <i class="nav-icon fas fa-euro-sign"></i>
+                            <a href="https://lstm-webapp.herokuapp.com/" class="nav-link">
+                                <i class="nav-icon fas fa-robot"></i>
                                 <p>
-                                    Forex
+                                    AI Analyzing
                                 </p>
                             </a>
                         </li>
-                        -->
                         <li class="nav-item">
                             <a href="?s=profile" class="nav-link">
                                 <i class="nav-icon fas fa-user"></i>
@@ -498,7 +497,7 @@ if($s == ""){
                                                 $count = 0;
                                                 while ($array_stock = mysqli_fetch_array($stock_list_pull)) {
                                                     $count++;
-                                                    $pull_stock_prices = mysqli_fetch_array(mysqli_query($con, "select stock_current,pulled_date,previous_close from stock_prices where stock_code='$array_stock[1]' and stock_current!='0.00' order by id DESC"));
+                                                    $pull_stock_prices = mysqli_fetch_array(mysqli_query($con, "select stock_current,pulled_date,previous_close from stock_prices where stock_code='$array_stock[1]' and stock_current!='0.00' order by id DESC limit 1"));
                                                     $current_price = $pull_stock_prices[0];
                                                     $closed = $pull_stock_prices[2];
                                                     if($current_price < $closed){
